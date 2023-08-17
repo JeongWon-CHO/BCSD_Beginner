@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6421654eddb574b69b27cd47e4fcfb44, type: 3}
+  m_Name: DropItem_Tree
+  m_EditorClassIdentifier: 
+  itemName: Log
+  stats:
+  - name: Log
+    value: 100
+  maxStack: 100
+  price: 5
+  icon: {fileID: 21300000, guid: baedcfd6a90a8425296a2017fa1a3680, type: 3}
+  prefab: {fileID: 2126783678360773137, guid: 7c1d36c671422459d91020316a05d691, type: 3}
+  description: "\uB098\uBB34\uB97C \uBCA0\uBA74 \uB098\uC624\uB294 \uBAA9\uC7AC\uC785\uB2C8\uB2E4."

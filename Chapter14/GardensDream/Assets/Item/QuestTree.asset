@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10aa69829363a436dadf450a6a762c5d, type: 3}
+  m_Name: QuestTree
+  m_EditorClassIdentifier: 
+  con: 100
+  itemDropTable: {fileID: 11400000, guid: a5ac364e1b6144aa3a2ef079fb203ad1, type: 2}
