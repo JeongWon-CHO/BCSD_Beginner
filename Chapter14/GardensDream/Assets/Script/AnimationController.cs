@@ -11,7 +11,7 @@ public class AnimationController : MonoBehaviour
     //private bool Jump = false;
     private bool isGround = true;
 
-    //¶¥ ÂøÁö ¿©ºÎ
+    //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private CapsuleCollider capsuleCollier;
 
 
@@ -58,7 +58,18 @@ public class AnimationController : MonoBehaviour
             //if (isGround) anim.SetTrigger("OnGround");
         }
 
-        
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            anim.SetTrigger("Attack");
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            anim.SetTrigger("Attack_S");
+        }
+
+
     }
 
     private void OnCollisionEnter(Collision collision)

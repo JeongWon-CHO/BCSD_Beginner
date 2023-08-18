@@ -98,11 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaab1565c88f844e7ac99d49e676194e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    itemType: 0
-    itemName: 
-    itemImage: {fileID: 0}
+  item: {fileID: 11400000, guid: ec6c4062c292e4d49ab87db1e197ca54, type: 2}
   image: {fileID: 2013623979208139736}
+  prefab: {fileID: 6485104772254111237}
 --- !u!65 &-7724358135126405271
 BoxCollider:
   m_ObjectHideFlags: 0

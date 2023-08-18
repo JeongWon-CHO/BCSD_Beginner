@@ -36,24 +36,22 @@ public class Tree : MonoBehaviour
         hp -= 10;
     }
 
-   
-    public GameObject DropingTree;
-    //DropingTree.transform.position.x
 
     public int DropTheItem()
     {
         if (hp <= 0)
         {
-
-            Vector3 p = new Vector3(DropingTree.transform.position.x, DropingTree.transform.position.y + 0.73f, DropingTree.transform.position.z);
+            
             // 몬스터가 죽으면 Item Drop Table 을 이용해 아이템 드랍
-            tree.itemDropTable.ItemDrop(p); // 원래 괄호 안에 transform.position
-            BtnNotActiviting();
+            tree.itemDropTable.ItemDrop(transform.position); // 원래 괄호 안에 transform.position
             Destroy(this.gameObject);
+            BtnNotActiviting();
+            
         }
 
         return hp;
     }
+
 
     public void BtnNotActiviting()
     {
@@ -65,7 +63,7 @@ public class Tree : MonoBehaviour
         }
 
 
-        Transform transform = canvas.transform; // The Transform Attached to this GameObject
+        Transform transform = canvas.transform;
         GameObject panel = transform.Find("LoggingBtn").gameObject;
 
         if (panel == null)

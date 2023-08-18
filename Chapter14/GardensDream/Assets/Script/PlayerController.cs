@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    //���ǵ� ���� ����
+
+    public int maxHP;
+    public int currentHP;
+    public Slider playerslider;
+
     [SerializeField]
     private float walkSpeed;
 
@@ -20,12 +25,13 @@ public class PlayerController : MonoBehaviour
     private float jumpForce;
 
     
-    // ���� ����
+    
     private bool isRun = false;
     private bool isCrouch = false;
     private bool isGround = true;
+    private bool Die = false;
 
-    // �ɾ��� �� �󸶳� ������ �����ϴ� ����
+    
     [SerializeField]
     private float crouchPosY;
     private float originPosY;
@@ -38,19 +44,6 @@ public class PlayerController : MonoBehaviour
 
 
 
-    /*
-    // �ΰ���
-    [SerializeField]
-    private float lookSensitivity;
-
-    // ī�޶� �Ѱ�
-    [SerializeField]
-    private float cameraRotationLimit;
-    private float currentCameraRotationX = 0; // �⺻���� 0�̶� �����ص� ������
-    */
-
-
-    // �ʿ��� ������Ʈ
     [SerializeField]
     private Camera theCamera;
     private Rigidbody myRigid;
@@ -68,8 +61,9 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
 
+    Weapon equipWeapon;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         capsuleCollier = GetComponent<CapsuleCollider>();
@@ -88,10 +82,19 @@ public class PlayerController : MonoBehaviour
         TryRun();
         TryCrouch();
         Move();
-        //CameraRotation();
-        //CharacterRotation();
+        playerslider.value = (float)currentHP / maxHP;
+        CheackDie();
     }
 
+    void CheackDie()
+    {
+        if (currentHP <= 0)
+        {
+            Destroy(gameObject);
+            anim.SetBool("Die", true);
+            Debug.Log("GameOver");
+        }
+    }
 
     private void TryCrouch()
     {
@@ -207,57 +210,9 @@ public class PlayerController : MonoBehaviour
 
         transform.position += moveVec * speed * Time.deltaTime;
 
-        /*
-        if (moveVec != Vector3.zero)
-        {
-            anim.SetBool("Walk", true);
-        }
-
-        if (moveVec == Vector3.zero)
-        {
-            anim.SetBool("Walk", false);
-        }
         
 
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            anim.SetBool("Run", true);
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            anim.SetBool("Run", false);
-        }
-
-
-
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            anim.SetBool("Jump", true);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            anim.SetBool("Jump", false);
-        }
-        */
-
         transform.LookAt(transform.position + moveVec);
-
-
-        /* 1��Ī ���� �����̴� �װ�
-        float _moveDirX = Input.GetAxisRaw("Horizontal"); // ������ 1, ����-1 �� ������ 0 ����
-        float _moveDirZ = Input.GetAxisRaw("Vertical");
-
-        Vector3 _moveHorizontal = transform.right * _moveDirX;
-        Vector3 _moveVertical = transform.forward * _moveDirZ;
-
-        Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed; // �� ����ȭ ��Ű��
-
-        myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
-        */
     }
 
 
@@ -275,28 +230,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
-    /*
-    private void CameraRotation()
+    public void PlayerHpRisk()
     {
-        // ���� ī�޶� ȸ��
-
-        float _xRotation = Input.GetAxisRaw("Mouse Y");
-        float _cameraRotationX = _xRotation * lookSensitivity;
-        currentCameraRotationX -= _cameraRotationX; // +�� �ϸ� ���콺 ���� ���
-        currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
-
-        theCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
+        currentHP -= 10;
     }
 
 
-    private void CharacterRotation()
-    {
-        // �¿� ĳ���� ȸ��
-        float _yRotation = Input.GetAxisRaw("Mouse X");
-        Vector3 _characterRotationY = new Vector3(0f, _yRotation, 0f) * lookSensitivity;
-        myRigid.MoveRotation(myRigid.rotation * Quaternion.Euler(_characterRotationY));
-
-    }
-    */
 }

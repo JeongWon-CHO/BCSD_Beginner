@@ -9,6 +9,8 @@ public enum ItemType
     Etc
 }
 
+
+//[CreateAssetMenu]
 [System.Serializable]
 public class Item2
 {

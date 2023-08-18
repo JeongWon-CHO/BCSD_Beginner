@@ -6,6 +6,15 @@ public class FieldItems : MonoBehaviour
 {
     public Item2 item;
     public SpriteRenderer image;
+    public Transform prefab;
+
+
+
+    public FieldItems dropItem;
+    public int weight; // 드랍할 확률
+
+
+
 
     public void SetItem(Item2 _item)
     {

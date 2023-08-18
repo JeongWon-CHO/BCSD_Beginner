@@ -15,9 +15,10 @@ public class ItemDropTable : ScriptableObject
         public int weight; // 드랍할 확률
     }
 
-    public List<DropItems> itemss = new List<DropItems>();
+    public List<FieldItems> itemss = new List<FieldItems>();
+
     
-    protected DropItem PickItem()
+    protected FieldItems PickItem()
     {
         int sum = 0;
         foreach (var item in itemss)
@@ -37,6 +38,8 @@ public class ItemDropTable : ScriptableObject
 
         return null;
     }
+    
+    
 
     public void ItemDrop(Vector3 pos)
     {
@@ -45,6 +48,5 @@ public class ItemDropTable : ScriptableObject
 
 
         Instantiate(item.prefab, pos, Quaternion.identity);
-        Debug.Log("나옴");
     }
 }
